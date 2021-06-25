@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_031222) do
+ActiveRecord::Schema.define(version: 2021_06_25_052523) do
+
+  create_table "followings", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
+    t.index ["follower_id"], name: "index_followings_on_follower_id"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.text "body"
+    t.string "title"
+    t.integer "author_id"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_tweets_on_author_id"
+    t.index ["parent_id"], name: "index_tweets_on_parent_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,10 +38,15 @@ ActiveRecord::Schema.define(version: 2021_06_25_031222) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "handle", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "followings", "users", column: "followed_user_id"
+  add_foreign_key "followings", "users", column: "follower_id"
+  add_foreign_key "tweets", "tweets", column: "parent_id"
+  add_foreign_key "tweets", "users", column: "author_id"
 end
