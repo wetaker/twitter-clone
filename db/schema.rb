@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_052523) do
+ActiveRecord::Schema.define(version: 2021_06_25_233226) do
 
   create_table "followings", force: :cascade do |t|
     t.integer "follower_id", null: false
@@ -19,6 +19,39 @@ ActiveRecord::Schema.define(version: 2021_06_25_052523) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
     t.index ["follower_id"], name: "index_followings_on_follower_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "liked_tweet_id", null: false
+    t.integer "liker_id", null: false
+    t.integer "liked_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["liked_tweet_id"], name: "index_likes_on_liked_tweet_id"
+    t.index ["liked_user_id"], name: "index_likes_on_liked_user_id"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
+  end
+
+  create_table "mentionings", force: :cascade do |t|
+    t.integer "mentioned_user_id", null: false
+    t.integer "mentioner_id", null: false
+    t.integer "tweet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mentioned_user_id"], name: "index_mentionings_on_mentioned_user_id"
+    t.index ["mentioner_id"], name: "index_mentionings_on_mentioner_id"
+    t.index ["tweet_id"], name: "index_mentionings_on_tweet_id"
+  end
+
+  create_table "retweets", force: :cascade do |t|
+    t.integer "retweeted_tweet_id", null: false
+    t.integer "retweeter_id", null: false
+    t.integer "retweeted_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["retweeted_tweet_id"], name: "index_retweets_on_retweeted_tweet_id"
+    t.index ["retweeted_user_id"], name: "index_retweets_on_retweeted_user_id"
+    t.index ["retweeter_id"], name: "index_retweets_on_retweeter_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -47,6 +80,15 @@ ActiveRecord::Schema.define(version: 2021_06_25_052523) do
 
   add_foreign_key "followings", "users", column: "followed_user_id"
   add_foreign_key "followings", "users", column: "follower_id"
+  add_foreign_key "likes", "tweets", column: "liked_tweet_id"
+  add_foreign_key "likes", "users", column: "liked_user_id"
+  add_foreign_key "likes", "users", column: "liker_id"
+  add_foreign_key "mentionings", "tweets"
+  add_foreign_key "mentionings", "users", column: "mentioned_user_id"
+  add_foreign_key "mentionings", "users", column: "mentioner_id"
+  add_foreign_key "retweets", "tweets", column: "retweeted_tweet_id"
+  add_foreign_key "retweets", "users", column: "retweeted_user_id"
+  add_foreign_key "retweets", "users", column: "retweeter_id"
   add_foreign_key "tweets", "tweets", column: "parent_id"
   add_foreign_key "tweets", "users", column: "author_id"
 end
