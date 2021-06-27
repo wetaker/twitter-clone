@@ -1,8 +1,8 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
-    @tweets = Tweet.where(author_id: current_user.followed_users).or(Post.where(author_id: current_user)).order(created_at: :desc).limit(20)
+    @tweets = Tweet.where(author_id: current_user.followed_users).or(Tweet.where(author_id: current_user)).order(created_at: :desc).limit(20)
     if current_user.followed_users.empty?
       @tweets = Tweet.last(20)
     end
