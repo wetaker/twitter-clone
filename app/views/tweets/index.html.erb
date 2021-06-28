@@ -1,7 +1,15 @@
 <h1>Tweets#index</h1>
 
+<div class="tweets-container">
+
+
 <%@tweets.each do |tweet|%>
     <article class="tweet">
         <%=render 'shared/tweet', {tweet: tweet} %>
     </article>
 <%end%>
+
+
+</div>
+
+
