@@ -34,12 +34,6 @@ html, body {
      background: rgba(0,0,0,1);
  }
 
-.main-header {
-    display: flex;
-    align-items: flex-end;
-    min-height: 100%;
-    flex: 0 1 362.5px
-}
 
 main {
     flex: 1 1 auto;
@@ -64,3 +58,101 @@ svg {
     width: 24px;
     height: auto;
 }
+
+/* Main nav */
+
+.main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 100%;
+    flex: 0 1 362.5px;
+}
+
+.hdr-content-container {
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hdr-content-container > * {
+    flex: 1 0 auto;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:stretch;
+    padding: 5px 10px 5px 10px;
+    min-width: 220px;
+    height: 100%;
+    max-height: 450px;
+}
+
+.main-nav a {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.main-nav svg {
+    padding-right: 15px;
+    width: auto;
+    height: 28px;
+}
+
+svg {
+    filter: invert(85%);
+  }
+
+
+.tweet-btn {
+    background-color: rgb(29, 161, 242);
+    box-shadow: rgb(0 0 0 / 8%) 0px 8px 28px;
+    transition-property: background-color, box-shadow;
+    transition-duration: 0.2s;
+    min-width: 48px;
+    min-height: 48px;
+    cursor: pointer;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9999px;
+}
+
+.tweet-btn span {
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: white;
+    letter-spacing:0.02rem;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 20px;
+    align-items: center;
+    flex-grow: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
