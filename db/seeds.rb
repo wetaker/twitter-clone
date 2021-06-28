@@ -15,6 +15,7 @@ User.destroy_all
     u = User.new
     u.email = Faker::Internet.email
     u.handle = '@' + u.email
+    u.username="user#{n}"
     u.save(validate: false)
 end
 

@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :followings, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :retweets, only: [:create, :destroy]
+
+  get 'home', to: 'tweets#index'
+  root to: 'tweets#index'
 end
