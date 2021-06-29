@@ -1,0 +1,7 @@
+
+
+<%=form_with model: @tweet do |form| %>
+    <%=form.text_area :body%>
+    <%=form.hidden_field :parent_id, value: @tweet.parent_id%>
+    <%=form.submit%>
+<%end%>

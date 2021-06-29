@@ -155,5 +155,14 @@ svg {
     flex-direction: column;
 }
 
+main {
+    max-width: 600px;
+}
 
+.main-container {
+    height: 100%;
+    width: 100%;
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+}
 

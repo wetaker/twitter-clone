@@ -2,9 +2,9 @@ class TweetsController < ApplicationController
   #before_action :authenticate_user!
 
   def index
-    @tweets = Tweet.where(author_id: current_user.followed_users).or(Tweet.where(author_id: current_user)).order(created_at: :desc).limit(20)
+    @tweets = Tweet.where(author_id: current_user.followed_users, parent_id: nil).or(Tweet.where(author_id: current_user, parent_id: nil)).order(created_at: :desc).limit(20)
     if current_user.followed_users.empty?
-      @tweets = Tweet.last(20)
+      @tweets = Tweet.where(parent_id: nil).order(created_at: :desc).limit(20)
     end
     
   end
@@ -15,15 +15,15 @@ class TweetsController < ApplicationController
   
   def new
     @tweet = Tweet.new
+    @tweet.parent_id = params[:tweet][:parent_id]
   end
 
   def create
-    @tweet = current_user.tweets.build(tweet_params, author_id: current_user.id)
-
+    @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
-      redirect_to request.referrer
+      redirect_to tweets_index_path
     else
-      render :new
+      render "new"
     end
   end
 
@@ -46,6 +46,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:body, :title, :parent_id)
+    params.require(:tweet).permit(:body, :parent_id)
   end
 end
