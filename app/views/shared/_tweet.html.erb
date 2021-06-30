@@ -1,7 +1,9 @@
 
 
 
-<div class="profile-pic">Profile Pic Here</div>
+<div class="profile-pic">
+    <%=image_tag "defaultprofile.png", alt: "ruhroh"%>
+</div>
 <div class="content">
     <header class="tweet-header">
         <div class="tweeter-info">
@@ -12,9 +14,9 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></g></svg>
     </header>
 
-    <div class="tweet-content">
-        <span><%=tweet.body%></span>
-    </div>
+    <a href="<%=tweet_path(tweet)%>"class="tweet-content">
+        <p><%=tweet.body%></p>
+    </a>
 
     <div class="tweet-actions">
         <div class="reply-btn">

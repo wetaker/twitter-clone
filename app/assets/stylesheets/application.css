@@ -14,6 +14,8 @@
  *= require_self
  */
 
+
+
  *,
  *:before,
  *:after {
@@ -64,6 +66,13 @@ svg {
     width: 24px;
     height: auto;
 }
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+    cursor:default;
+  }
+
 
 /* Main nav */
 
@@ -194,7 +203,7 @@ svg {
 }
 
 main {
-    max-width: 600px;
+    max-width: 50vw;
 }
 
 .main-container {
@@ -241,4 +250,10 @@ main {
     color: #6E767D;
     font-size: 15px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+img {
+    filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
+    width: 90%;
+    height: auto;
 }

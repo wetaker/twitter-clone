@@ -5,7 +5,8 @@
 </header>
 
 <div class="new-tweet-form">
-    <div class="profile-pic">Profile pic here</div>
+    <div class="profile-pic"><%=image_tag "defaultprofile.png", alt: "ruhroh"%>
+</div>
     <%=form_with model: @tweet do |form|%>
         <%=form.text_area :body, placeholder: "Whats happening?"%>
         <%=form.hidden_field :parent_id, value: nil%>
