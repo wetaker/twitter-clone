@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
   #before_action :authenticate_user!
 
   def index
+    @tweet = Tweet.new
     @tweets = Tweet.where(author_id: current_user.followed_users, parent_id: nil).or(Tweet.where(author_id: current_user, parent_id: nil)).order(created_at: :desc).limit(20)
     if current_user.followed_users.empty?
       @tweets = Tweet.where(parent_id: nil).order(created_at: :desc).limit(20)

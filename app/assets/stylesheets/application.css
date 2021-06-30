@@ -23,7 +23,7 @@
  }
 
 html, body {
-    height: 100%;
+    min-height: 100vh;
 }
 
  body {
@@ -35,12 +35,17 @@ html, body {
      font-family: Helvetica, sans-serif
  }
 
+ body > * {
+     min-height: 100vh;
+ }
+
+
 
 main {
     flex: 1 1 auto;
     min-height: 100%;
-    border-left: rgba(228, 220, 220, 0.2) 1px solid;
-    border-right: rgba(228, 220, 220, 0.2) 1px solid;
+    border-left: rgb(47, 51, 54) 1px solid;
+    border-right: rgb(47, 51, 54) 1px solid;
 }
 
 .right-sidebar {
@@ -86,28 +91,57 @@ svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items:stretch;
+    align-items:flex-start;
     padding: 5px 10px 5px 10px;
     min-width: 220px;
     height: 100%;
     max-height: 450px;
+    position: sticky;
+    top:0;
+
 }
 
 .main-nav a {
-    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    align-content: center;
     font-size: 1.4rem;
+    line-height: 2.1rem;
     color: rgba(255,255,255,0.88);
     text-decoration: none;
     font-weight: 700;
+    padding: 10px 20px;
+}
+
+.main-nav a:first-child {
+    padding-right: 10px;
+}
+
+.main-nav a:last-child {
+    width: 95%;
+    margin-top: 10px;
+}
+
+.main-nav a:hover {
+    color: rgb(18,190,252);
+    border-radius: 9999px;
+    background-color: rgb(18,190,252, 0.2);
+}
+
+.main-nav a:hover svg {
+    filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
+}
+
+.nav-container {
+    padding-right: 10px;
 }
 
 .main-nav svg {
     padding-right: 15px;
     width: auto;
     height: 28px;
+    margin-bottom: 5px;
 }
 
 svg {
@@ -129,7 +163,9 @@ svg {
     border-width: 1px;
     border-style: solid;
     border-radius: 9999px;
+    transition-duration: 0.2s;
 }
+
 
 .tweet-btn span {
     margin: 0 auto;
@@ -148,6 +184,8 @@ svg {
     flex-grow: 0;
     padding-top: 15px;
     padding-bottom: 15px;
+    position:sticky;
+    bottom:0;
 }
 
 .profile-info {
@@ -166,3 +204,41 @@ main {
     grid-template-columns: 1fr auto 1fr;
 }
 
+.main-nav .tweet-btn:hover {
+    background-color: rgb(10,130,210);
+}
+
+.tweet-btn:hover {
+    background-color: rgb(10,130,210);
+}
+
+.user-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.user-actions > * {
+    text-decoration: none;
+    color: #d9d9d9;
+    border-radius: 9999px;
+    padding: 5px 10px;
+    font-weight: 700;
+}
+
+.tweeter-name {
+    font-size: 15px;
+    color: white;
+    font-weight: 700;
+}
+
+.tweeter-name:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.tweeter-handle, .tweet-date {
+    color: #6E767D;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}

@@ -11,4 +11,10 @@ class UsersController < ApplicationController
         @tweets = User.tweets
     end
 
+    def create
+        super
+        @user.handle = "@" + @user.username
+        @user.save
+    end
+
 end

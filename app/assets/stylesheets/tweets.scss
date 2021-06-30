@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+$border-color: rgb(47, 51, 54);
+
 .tweets-container {
 
 height: 100%;
@@ -10,7 +12,7 @@ height: 100%;
 
 
 // Individual Tweets
-.tweet {
+.tweet, .new-tweet-form {
     display:grid;
     grid-template-columns:minmax(auto, 60px) 1fr;
     padding: 5px 10px;
@@ -20,6 +22,10 @@ height: 100%;
     color: #D9D9D9;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     max-width: 600px;
+}
+
+.tweet:hover {
+    background-color: rgba(19, 18, 18, 0.2);
 }
 
 .tweet .profile-pic {
@@ -51,20 +57,6 @@ height: 100%;
     }
 }
 
-.tweeter-name {
-    font-weight: 700;
-}
-
-.tweeter-name:hover {
-    text-decoration: underline;
-    cursor:pointer;
-}
-
-.tweeter-handle, .tweet-date {
-    color: #6E767D;
-    font-size: 15px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-}
 
 .tweet-actions {
     display:flex;
@@ -87,12 +79,9 @@ height: 100%;
     }
 }
 
-.like-btn, .retweet-btn, .reply-btn {
-    color:rgb(122, 122, 122);
-}
 
 .tweet:last-child {
-    border-bottom: 1px solid rgba(228, 220, 220, 0.2);
+    border-bottom: 1px solid $border-color;
     display:hidden;
 }
 
@@ -105,6 +94,119 @@ button {
     align-items:center;
 }
 
+.index-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 15px;
+    font-size: 10px;
+    h1 {
+        line-height: 15px;
+    }
+}
+
+#tweet_body {
+    width: 100%;
+    height: 60%;
+    background: black;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid $border-color;
+    resize: none;
+}
+
+
+.new-tweet-form {
+    form {
+        display: flex;
+        justify-content:flex-end;
+        flex-wrap:wrap;
+    }
+    input {
+        font-weight: 700;
+        font-size: 15px;
+        color: white;
+        letter-spacing:-0.5px;
+        min-height: 32px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .profile-pic {
+        padding-right: 10px;
+    }
+}
+
+.hdr-border {
+    height: 12px;
+    border-top: $border-color solid 1px;
+    background-color: rgb(21, 24, 28);
+}
+
+.like-btn, .retweet-btn, .reply-btn {
+    color:rgb(122, 122, 122);
+    padding: 5px 3px;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+    background: rgba(0,0,0,0);
+}
+
+.retweet-btn:hover {
+    background-color: rgba(29,224,45,0.2);
+    button {
+        color: #1de02d;
+    }
+
+    svg {
+        filter: invert(75%) sepia(23%) saturate(7278%) hue-rotate(75deg) brightness(101%) contrast(98%);
+    }
+}
+
+.like-btn:hover {
+    border-radius: 50%;
+    background-color: rgba(252,61,61,0.2);
+    button {
+        color:#fc3d3d;
+    }
+    svg {
+        filter: invert(30%) sepia(88%) saturate(2377%) hue-rotate(341deg) brightness(108%) contrast(98%);}
+    }
+.reply-btn:hover {
+    background-color: rgba(2,180,212,0.2);
+    button {
+        color: #02b4d4;
+    }
+
+    svg {
+        filter: invert(71%) sepia(41%) saturate(5748%) hue-rotate(147deg) brightness(91%) contrast(98%);
+    }
+}
+
+.retweeted {
+    button {
+        color: #1de02d;
+    }
+
+    svg {
+        filter: invert(75%) sepia(23%) saturate(7278%) hue-rotate(75deg) brightness(101%) contrast(98%);
+    }
+}
+
+.liked {
+    button {
+        color:#fc3d3d;
+    }
+    svg {
+        filter: invert(30%) sepia(88%) saturate(2377%) hue-rotate(341deg) brightness(108%) contrast(98%);}
+    }
+
+
 
 
 }
+
+
+
+
