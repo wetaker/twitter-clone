@@ -1,0 +1,74 @@
+<div class="user-container">
+
+<div class="user-profile">
+
+    <header class="user-hdr">
+        <div class="back-btn"><svg viewBox="0 0 24 24" aria-hidden="true" class="r-13gxpu9 r-4qtqp9 r-yyyyoo r-18yzcnr r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-yc9v9c"><g><path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path></g></svg></div>
+        <div class="heading-container">
+            <h1 class="username"><%=@user.username%></h1>
+            <span class="tweet-count small-gray"><%=@tweets.count%> Tweets</span>
+        </div>
+    </header>
+
+
+
+    <div class="usr-banner">
+       <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar"%>
+    </div>
+
+
+    <div class="user-info">
+        <div class="user-actions">
+            <div class="menu-btn"><svg class="filter-blue" viewBox="0 0 24 24" aria-hidden="true" class="r-1fmj7o5 r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></g></svg></div>
+            <%unless @user.followers.include?(current_user)%>
+                <%=button_to followings_path, method: 'post' do%>
+                    <span>Follow</span>
+                    <input name="followed_user_id" value=<%=@user.id%> type="hidden">
+                <%end%>
+            <%else%>
+                <%=button_to following_path, method: 'delete' do%>
+                    <span>Following</span>
+                    <input name="followed_user_id" value=<%=@user.id%> type="hidden">
+                <%end%>                
+            <%end%>
+        </div>
+
+        <div class="user-info">
+            <h1 class="username"><%=@user.username%></h1>
+            <span class="tweeter-handle"><%=@user.handle%></span>
+            <p class="description">User description to be added later?</p>
+            <div class="follow-info">
+                <span class="following-count">
+                    <span class="follow-number"><%=@user.followed_users.count%></span>
+                    Following
+                </span>
+
+                <span class="follower-count">
+                    <span class="follow-number"><%=@user.followers.count%></span>
+                    Followers
+                </span>
+            </div>
+            <span class="small-gray"> 
+                Not followed by anyone your following
+            </span>
+        </div>
+        <div class="tweet-filters small-gray">
+            <%=link_to "Tweets", user_path%>       
+            <%=link_to "Tweets & Replies", user_path(replies: true) %>       
+            <%=link_to "Media", nil%>
+            <%=link_to "Likes", user_path(likes: true)%>
+        </div>
+    </div>
+</div>
+
+<div class="tweets-container">
+<section class="feed">
+    <%@tweets.each do |tweet|%>
+        <article class="tweet">
+            <%=render 'shared/tweet', {tweet: tweet} %>
+        </article>
+    <%end%>
+</section>
+</div>
+
+</div>

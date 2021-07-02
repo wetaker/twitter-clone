@@ -46,8 +46,8 @@ html, body {
 main {
     flex: 1 1 auto;
     min-height: 100%;
-    border-left: rgb(47, 51, 54) 1px solid;
-    border-right: rgb(47, 51, 54) 1px solid;
+    border-left: rgba(228, 220, 220, 0.9) 1px solid;
+    border-right: rgba(228, 220, 220, 0.9) 1px solid;
 }
 
 .right-sidebar {
@@ -246,7 +246,7 @@ main {
     cursor:pointer;
 }
 
-.tweeter-handle, .tweet-date {
+.tweeter-handle, .tweet-date, .small-gray {
     color: #6E767D;
     font-size: 15px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
@@ -256,4 +256,19 @@ img {
     filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
     width: 90%;
     height: auto;
+}
+
+.logout-btn {
+    border-radius: 9999px;
+    transition-duration: 0.2s;
+    padding: 10px 20px;
+}
+
+.logout-btn:hover {
+    background-color: rgb(18,190,252, 0.3);
+    color:rgb(18,190,252);
+}
+
+.filter-blue {
+    filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
 }

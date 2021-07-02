@@ -7,7 +7,9 @@
 <div class="content">
     <header class="tweet-header">
         <div class="tweeter-info">
-            <span class="tweeter-name"><%=tweet.author.email%></span>
+            <%=link_to tweet.author do%>
+                <span class="tweeter-name"><%=tweet.author.email%></span>
+            <%end%>
             <span class="tweeter-handle"><%=tweet.author.handle%></span>
             <span class="tweet-date"><%=tweet.created_at.strftime("%B #{tweet.created_at.day.ordinalize}")%></span>
         </div>

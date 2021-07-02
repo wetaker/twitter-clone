@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @tweets = User.tweets
+        @tweets = @user.tweets
     end
 
     def create

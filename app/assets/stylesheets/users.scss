@@ -1,0 +1,141 @@
+$lightblue: rgb(18,190,252);
+
+
+.user-container {
+
+.user-profile {
+    min-width: 600px;
+    font-family: Helvetica;
+    color: #d9d9d9;
+}
+
+
+.user-hdr {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    .back-btn {
+        display:flex;
+        align-items: center;
+        padding: 0 10px 0 15px;
+    }
+
+    svg {
+        filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
+    }
+}
+
+.heading-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 15px;
+}
+
+.usr-banner{
+    min-height: 200px;
+    background-color: rgb(56, 17, 17);
+}
+
+
+.user-info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 10px;
+    svg {
+        width: 30px;
+        height: auto;
+    }
+
+    button {
+        border: none;
+        text-decoration: none;
+        background: transparent;
+        color: $lightblue;
+    }
+}
+
+.user-info > * {
+    padding-bottom: 10px;
+}
+
+.user-actions {
+    align-self: flex-end;
+    align-items: center;
+
+    button {
+        border-radius: 9999px;
+        border: 1px solid $lightblue;
+        padding: 10px 15px;
+        font-size: 15px;
+        font-family: Helvetica;
+        transition-duration: 0.2s;
+        font-weight: 700;
+    }
+
+    button:hover {
+        background: rgba(129, 209, 223, 0.253);
+    }
+
+}
+
+h1.username {
+    color: #d9d9d9;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.description {
+    color:#d9d9d9;
+    font-size: 1rem;
+}
+
+.following-count, .follower-count {
+    color: #6E767D;
+    font-size: 16px;
+    font-family: Helvetica;
+}
+.following-count {
+    padding-right: 10px;
+}
+
+.follow-number {
+    color: #d9d9d9;
+    font-weight: 700;
+}
+
+.tweet-filters {
+    display: flex;
+    width: calc(100% - 10px);
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+    a {
+        font-size: 16px;
+        font-weight: 500;
+        flex-grow: 1;
+        text-align: center;
+        padding: 13px 0;
+        transition-duration: 0.1s;
+    }
+
+    a:hover {
+        color: $lightblue;
+        background-color: rgba(129, 209, 223, 0.253)
+    }
+}
+
+.user-avatar {
+    width: 150px;
+    height: auto;
+    position: relative;
+    bottom: -125px;
+}
+
+
+
+}
