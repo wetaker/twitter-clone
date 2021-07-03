@@ -21,7 +21,8 @@ module ApplicationHelper
     end
 
     def createMentions(tweet) 
-        # Takes a tweet body and returns the same body but with mentions replaced by links to the mentioned user 
+        # Takes a tweet and creates mentions that occur within its body.
+        body = tweet.body
         words = body.split(' ')
         words = words.map do |word|
             if word[0] == '@'

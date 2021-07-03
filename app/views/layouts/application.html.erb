@@ -68,9 +68,39 @@
             <%=yield%>
           </main>
           <section class="right-sidebar">
+          <div class="wrapper">
             <nav class="user-actions"> 
               <%=link_to "Logout", destroy_user_session_path, method: "delete", class: "logout-btn"%>
             </nav>
+
+            <div class="mentions-container">
+                
+                <%mentions = Mentioning.where(mentioned_user_id: current_user.id)%>
+                <h2>Mentions</h2>
+                <div class="mention-notifications">
+                <div class="tweets-container">
+                    <%mentions.each do |mention|%>
+                      <%=render 'shared/tweet', tweet:mention.tweet%>
+                    <%end%>
+                </div>
+                </div>
+            </div>
+          
+            <div class="replies-container">
+                <%replies = current_user.tweets.map do |tweet| tweet.children end%>
+                <%replies = replies.flatten%>
+                <h2>Replies</h2>
+                <div class="reply-notifications">
+                  <div class="tweets-container">
+                  <%replies.each do |reply|%>
+                    <%=render 'shared/tweet', tweet:reply%>
+                  <%end%>
+                  </div>
+                </div>
+            </div>
+            </div>
+
+
           </section>
         </div>
     <%else%>

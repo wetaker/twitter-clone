@@ -57,7 +57,12 @@
                 </span>
             </div>
             <span class="small-gray"> 
-                Not followed by anyone your following
+                <%shared = @user.followers & current_user.followed_users%>
+                <%if shared.empty?%>
+                    Not followed by anyone your following
+                <%else%>
+                    Followed by <%=(shared.map do |usr| usr.username end).join(', ')%>
+                <%end%>
             </span>
         </div>
         <div class="tweet-filters small-gray">

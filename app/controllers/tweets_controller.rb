@@ -23,8 +23,8 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
-      createMentions(@tweet)
-      redirect_to tweets_index_path
+      helpers.createMentions(@tweet)
+      redirect_to request.referrer
     else
       render "new"
     end

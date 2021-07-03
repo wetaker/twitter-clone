@@ -55,6 +55,8 @@ main {
     margin-right: 100px;
     min-height: 100%;
     flex: 0 1 300px;
+    display: grid;
+    grid-template-columns: auto 1fr;
 }
 
 .logo-container svg {
@@ -274,3 +276,23 @@ img {
 }
 
 
+.replies-container, .mentions-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px;
+    border: 3px white solid;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 350px;
+}
+
+
+
+.mentioner {
+    color:rgb(68, 170, 233);
+}
+
+.mentioner:hover {
+    text-decoration: underline;
+}
