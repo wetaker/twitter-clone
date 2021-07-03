@@ -72,9 +72,7 @@
 <div class="tweets-container">
 <section class="feed">
     <%@tweets.each do |tweet|%>
-        <article class="tweet">
             <%=render 'shared/tweet', {tweet: tweet} %>
-        </article>
     <%end%>
 </section>
 </div>
