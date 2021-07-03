@@ -15,7 +15,16 @@
 
     <%=render 'shared/tweet', tweet: @tweet%>
 
-    <%=render 'shared/new_tweet_form', tweet: Tweet.new%>
+    <%tweet = Tweet.new%>
+    <div class="reply-tweet-form">
+        <div class="profile-pic"><img alt="ruhroh" src="/assets/defaultprofile.png"></div>
+
+        <%=form_with model: tweet do |form|%>
+            <%=form.text_area :body, placeholder: "Whats happening?"%>
+            <%=form.hidden_field :parent_id, value: @tweet.id%>
+            <%=form.submit "Tweet", class: "tweet-btn"%>
+        <%end%>
+    </div>
     
     <div class="hdr-border">
 
@@ -26,6 +35,6 @@
             <%=render 'shared/tweet', tweet: child %>
         <%end%>
     <%else%>
-        <p>No replies yet</p>
+        <p class="no-replies-tag">No replies yet. Be the first.</p>
     <%end%>
 </div>

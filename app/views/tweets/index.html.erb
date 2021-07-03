@@ -17,9 +17,7 @@
 </div>
 
 <%@tweets.each do |tweet|%>
-    <article class="tweet">
         <%=render 'shared/tweet', {tweet: tweet} %>
-    </article>
 <%end%>
 
 
