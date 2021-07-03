@@ -63,9 +63,14 @@ $lightblue: rgb(18,190,252);
     padding-bottom: 10px;
 }
 
+.user-info h1 {
+    padding-bottom: 0px;
+}
+
 .user-actions {
     align-self: flex-end;
     align-items: center;
+    min-height: 50px;
 
     button {
         border-radius: 9999px;
