@@ -207,6 +207,18 @@ button {
         word-break: break-all;
     }
 
+
+.new-tweet-form form{
+    width:100%;
+}
+
+.mention {
+    color: rgb(53, 163, 231);
+}
+
+.mention:hover {
+    text-decoration: underline;
+}
 }
 
 

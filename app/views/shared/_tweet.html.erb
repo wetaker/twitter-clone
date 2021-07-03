@@ -22,7 +22,7 @@
         </span>
     <%end%>
     <a href="<%=tweet_path(tweet)%>"class="tweet-content">
-        <p><%=tweet.body%></p>
+        <p><%=sanitize addHandlesToBody(tweet.body)%></p>
     </a>
 
     <div class="tweet-actions">

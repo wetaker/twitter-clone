@@ -1,0 +1,9 @@
+<div class="new-tweet-form">
+    <div class="profile-pic"><img alt="ruhroh" src="/assets/defaultprofile.png"></div>
+
+    <%=form_with model: tweet do |form|%>
+        <%=form.text_area :body, placeholder: "Whats happening?"%>
+        <%=form.hidden_field :parent_id, value: params[:tweet][:parent_id]%>
+        <%=form.submit "Tweet", class: "tweet-btn"%>
+    <%end%>
+</div>
