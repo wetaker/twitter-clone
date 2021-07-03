@@ -136,6 +136,13 @@ h1.username {
     bottom: -125px;
 }
 
+.handle {
+    color: rgba(70, 130, 240, 1);
+}
+
+.handle:hover {
+    text-decoration: underline;
+}
 
 
 }

@@ -1,6 +1,5 @@
 
 
-
 <div class="profile-pic">
     <%=image_tag "defaultprofile.png", alt: "ruhroh"%>
 </div>
@@ -16,6 +15,12 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></g></svg>
     </header>
 
+    <%if tweet.parent%>
+        <span class="is-reply small-gray">
+            Replying to 
+            <%=link_to tweet.parent.author.handle, user_path(tweet.parent.author), class: "handle"%>
+        </span>
+    <%end%>
     <a href="<%=tweet_path(tweet)%>"class="tweet-content">
         <p><%=tweet.body%></p>
     </a>
