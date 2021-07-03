@@ -20,7 +20,7 @@
         <div class="profile-pic"><img alt="ruhroh" src="/assets/defaultprofile.png"></div>
 
         <%=form_with model: tweet do |form|%>
-            <%=form.text_area :body, placeholder: "Whats happening?"%>
+            <%=form.text_area :body, placeholder: "Tweet your reply"%>
             <%=form.hidden_field :parent_id, value: @tweet.id%>
             <%=form.submit "Tweet", class: "tweet-btn"%>
         <%end%>
