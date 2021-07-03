@@ -8,7 +8,13 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @tweets = @user.tweets
+        if params[:replies]
+            @tweets = Tweet.where(author_id: @user.id)
+        elsif params[:likes]
+            @tweets = @user.liked_tweets
+        else 
+            @tweets = @user.tweets
+        end
     end
 
     def create
