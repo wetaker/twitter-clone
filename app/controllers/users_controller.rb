@@ -9,11 +9,15 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         if params[:replies]
-            @tweets = Tweet.where(author_id: @user.id)
+            retweets = Retweet.where(retweeter_id: @user.id).map do |retweet| retweet.retweeted_tweet end
+            retweeted_tweets = Tweet.where(id: retweets.map(&:id))
+            @tweets = Tweet.where(author_id: @user.id).or(retweeted_tweets)
         elsif params[:likes]
             @tweets = @user.liked_tweets
         else 
-            @tweets = @user.tweets
+            retweets = Retweet.where(retweeter_id: @user.id).map do |retweet| retweet.retweeted_tweet end
+            retweeted_tweets = Tweet.where(id: retweets.map(&:id))
+            @tweets = @user.tweets.or(retweeted_tweets)
         end
     end
 
