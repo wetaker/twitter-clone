@@ -21,6 +21,7 @@ class UsersController < ApplicationController
         super
         @user.handle = "@" + @user.username
         @user.save
+        redirect_to 'root'
     end
 
 end
