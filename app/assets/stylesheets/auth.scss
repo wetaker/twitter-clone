@@ -1,7 +1,7 @@
 
 
 
-.login-container {
+.login-container, .new-registration-container {
     margin: 0 auto;
     margin-top: 100px;
     display: flex;
@@ -94,5 +94,16 @@
 
     a:hover {
         text-decoration: underline;
+    }
+}
+
+.new-registration-container {
+    #user_username {
+        margin-bottom: 10px;
+    }
+
+    em {
+        color: #d9d9d9;
+        font-size: 14px;
     }
 }
