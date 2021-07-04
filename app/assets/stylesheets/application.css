@@ -281,10 +281,16 @@ img {
     flex-direction: column;
     padding: 10px;
     margin: 20px;
-    border: 3px white solid;
+    border: 3px solid rgb(21,24,28);
+    border-radius: 5%;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 350px;
+    background: rgb(21,24,28);
+}
+
+.replies-container h2, .mentions-container h2 {
+    padding-bottom: 3px;
 }
 
 
@@ -295,4 +301,8 @@ img {
 
 .mentioner:hover {
     text-decoration: underline;
+}
+
+.back-btn:hover {
+    background-color: white;
 }

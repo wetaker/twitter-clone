@@ -89,6 +89,7 @@
             <div class="replies-container">
                 <%replies = current_user.tweets.map do |tweet| tweet.children end%>
                 <%replies = replies.flatten%>
+                <%replies = Tweet.where(id: replies.map(&:id)).order("created_at DESC")%>
                 <h2>Replies</h2>
                 <div class="reply-notifications">
                   <div class="tweets-container">

@@ -1,4 +1,5 @@
 class Tweet < ApplicationRecord
+  self.per_page = 10
 
   # Tweet author
   belongs_to :author, class_name: 'User', foreign_key: :author_id
