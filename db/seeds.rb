@@ -11,32 +11,22 @@ User.destroy_all
 
 
 # User seeding
-2.times do |n|
+50.times do |n|
     u = User.new
     u.email = Faker::Internet.email
-    u.handle = '@' + u.email
-    u.username="user#{n}"
+    u.username=Faker::Name.name
+    u.handle = '@' + u.username
     u.save(validate: false)
 end
 
-u1 = User.first
-u2 = User.last
-# Create a tweet for u1
-u1.tweets.create!(body: "Hi my name is #{u1.email} and this is my first tweet", 
-    title: "Title")
 
-tweet = u1.tweets[0]
-
-# u2 likes u1 tweet
-Like.create!(liker_id: u2.id, liked_tweet_id: tweet.id, liked_user_id: tweet.author.id)
-
-# u2 retweets u1s tweet
-Retweet.create(retweeted_tweet_id: tweet.id, retweeter_id: u2.id,
-                retweeted_user_id: tweet.author.id)
-
-# u2 liked u1's tweet so much that u2 follows u1
-Following.create(follower_id: u2.id, followed_user_id: u1.id)
-
-# u1 appreciated u2's engagement and so mentioned him in his tweet!
-Mentioning.create(mentioned_user_id: u2.id, mentioner_id: u1.id, tweet_id: tweet.id)
+User.all.each do |user|    
+    5.times do |n|
+        body = Faker::Quote.famous_last_words
+        if rand() < 0.5
+            tweet = user.tweets.build(body: body, parent_id: nil) 
+            tweet.save(validate: false)
+        end
+    end
+end
 
