@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  
+  # Paginate
+  self.per_page = 10
 
   # Tweets
   has_many :tweets, foreign_key: :author_id, class_name: 'Tweet', dependent: :destroy

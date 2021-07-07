@@ -3,9 +3,11 @@ class UsersController < ApplicationController
 
     def index
         unless params[:search]
-            @users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}.reverse
+            @users = User.all.includes(:followings).sort{|a,b| a.followers.count <=> b.followers.count}.reverse
+            @users = User.where(id: @users.map(&:id)).paginate(:page => params[:page])
         else
             @users = helpers.userSearch(params[:search])
+            @users = User.where(id: @users.map(&:id)).paginate(:page => params[:page])
         end
     end
 

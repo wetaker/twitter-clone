@@ -19,7 +19,7 @@
 <%@tweets.each do |tweet|%>
         <%=render 'shared/tweet', {tweet: tweet} %>
 <%end%>
-<%= will_paginate @posts %>
+<%= will_paginate @tweets %>
 
 
 </div>
