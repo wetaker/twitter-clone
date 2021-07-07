@@ -1,0 +1,21 @@
+
+<div class="user">
+    <div>
+        <%=link_to user.username, user%>
+        <span class="small-gray"><%=user.handle%></span>
+    </div>  
+    <p><%=user.followers.count%> Followers </p>
+    <p><%=user.followed_users.count%> Following</p>
+    <%unless user.followers.include?(current_user)%>
+        <%=button_to followings_path, method: 'post' do%>
+            <span>Follow</span>
+            <input name="followed_user_id" value=<%=user.id%> type="hidden">
+        <%end%>
+    <%else%>
+        <%=button_to following_path(id: user.id), method: 'delete' do%>
+            <span>Following</span>
+            <input name="followed_user_id" value=<%=user.id%> type="hidden">
+        <%end%>                
+    <%end%>
+
+</div>

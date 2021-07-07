@@ -1,0 +1,9 @@
+
+<div class="users-index-container">
+<div class="user-container">
+    <%@users.each do |user|%>
+        <%=render 'user_summary', user: user%>
+    <%end%>
+
+</div>
+</div>

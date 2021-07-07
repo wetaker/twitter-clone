@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweet = Tweet.new
-    @tweets = Tweet.where(author_id: current_user.followed_users, parent_id: nil).or(Tweet.where(author_id: current_user, parent_id: nil)).order(created_at: :desc).limit(20)
+    @tweets = Tweet.where(author_id: current_user.followed_users, parent_id: nil).or(Tweet.where(author_id: current_user, parent_id: nil)).paginate(:page => params[:page]).order('created_at DESC')
     if current_user.followed_users.empty?
       @tweets = Tweet.where(parent_id: nil).paginate(:page => params[:page]).order('created_at DESC')
     end
@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @tweet.parent_id = params[:tweet][:parent_id]
   end
-
+  
   def create
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save

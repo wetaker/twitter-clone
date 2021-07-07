@@ -67,7 +67,7 @@ $lightblue: rgb(18,190,252);
     padding-bottom: 0px;
 }
 
-.user-actions {
+.user-actions{
     align-self: flex-end;
     align-items: center;
     min-height: 50px;
@@ -148,6 +148,56 @@ h1.username {
 .handle:hover {
     text-decoration: underline;
 }
+
+}
+
+
+
+
+.users-index-container {
+    
+    .user-container {
+        display:grid;
+        row-gap: 10px;
+        grid-template-columns: 1fr;
+    
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+
+    .user {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        align-items: center;
+        background: rgb(21,24,28);
+        border-radius: 9999px;
+        min-height: 70px;
+    }
+
+    .user div:first-child {
+        display: flex;
+        padding-left: 20px;
+        flex-direction: column;
+    }
+
+    button {
+        border-radius: 9999px;
+        border: 1px solid $lightblue;
+        padding: 10px 15px;
+        font-size: 15px;
+        font-family: Helvetica;
+        transition-duration: 0.2s;
+        font-weight: 700;
+        background-color: $lightblue;
+        width: 90%;
+    }
+
+    button:hover {
+        background: rgba(129, 209, 223, 0.253);
+    }
 
 
 
