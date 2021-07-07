@@ -2,7 +2,11 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}.reverse
+        unless params[:search]
+            @users = User.all.sort{|a,b| a.followers.count <=> b.followers.count}.reverse
+        else
+            @users = helpers.userSearch(params[:search])
+        end
     end
 
 

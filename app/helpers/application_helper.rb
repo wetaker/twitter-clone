@@ -35,4 +35,11 @@ module ApplicationHelper
         end
     end
 
+    def userSearch(str)
+        # Takes a string and returns users s.t. the string is a substring of the user.
+        # Consider sequence alignment eventually ?
+        users = User.all.filter do |user| user.username.downcase().include?(str.downcase()) end
+        return users
+    end
+
 end

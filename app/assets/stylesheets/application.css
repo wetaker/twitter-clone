@@ -226,6 +226,7 @@ main {
 .user-actions {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -235,6 +236,31 @@ main {
     border-radius: 9999px;
     padding: 5px 10px;
     font-weight: 700;
+}
+
+
+.user-actions input {
+    border-radius: 9999px;
+    padding: 10px;
+    border:none;
+    font-size: 15px;
+    background: rgb(21,24,28);
+    color: white;
+}
+
+.user-actions #search {
+    border-radius: 9999px 0 0 9999px;
+    padding-right: 0;
+}
+
+.user-actions input[type="submit"] {
+    border-radius: 0 9999px 9999px 0;
+    color: #d9d9d9;
+}
+
+.user-actions input[type="submit"]:hover {
+    background: rgb(40,44,58);
+
 }
 
 .tweeter-name {
