@@ -47,7 +47,7 @@
                 <%end%>
             </div>
         <%else%>
-            <%if current_user = @user%>
+            <%if current_user == @user%>
                 <div class="user-actions"><%=link_to :Profile, new_profile_path, class: "profile-btn"%></div>
             <%end%>
         <%end%>
@@ -57,8 +57,8 @@
             <h1 class="username"><%=@user.username%></h1>
             <span class="tweeter-handle"><%=@user.handle%></span>
             <p class="description">
-            <%if current_user.profile.description%>
-                <%=current_user.profile.description%>
+            <%if @user.profile.description%>
+                <%=@user.profile.description%>
             <%else%>
                 User description not filled out :( !
             <%end%>

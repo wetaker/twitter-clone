@@ -2,7 +2,7 @@
 
 <div class="profile-pic">
     <% if tweet.author.profile.avatar.attached?%>
-        <img class="avatar no-filter" src="<%=(url_for(current_user.profile.avatar))%>" alt="ruh roh">
+        <img class="avatar no-filter" src="<%=(url_for(tweet.author.profile.avatar))%>" alt="ruh roh">
     <%else%>
         <img class="avatar filter" src="/assets/defaultprofile" alt="ruh roh">
     <%end%></div>
