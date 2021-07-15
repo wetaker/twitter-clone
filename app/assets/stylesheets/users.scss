@@ -36,7 +36,14 @@ $border-color: rgb(47, 51, 54);
 
 .usr-banner{
     min-height: 200px;
+    max-height: 200px;
     background-color: rgb(56, 17, 17);
+
+    .banner {
+        position:absolute;
+        width: 600px;
+        height: 200px;
+    }
 }
 
 

@@ -15,8 +15,14 @@
 
 
     <div class="usr-banner">
-        <%if current_user.profile.avatar.attached?%>
-            <%=image_tag current_user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
+        <%if @user.profile.banner.attached?%>
+            <%=image_tag @user.profile.banner, alt: "ruhroh", class:"no-filter banner"%>
+        <%end%>
+
+
+
+        <%if @user.profile.avatar.attached?%>
+            <%=image_tag @user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
        <%else%>
             <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar filter"%>
        <%end%>
@@ -54,7 +60,7 @@
             <%if current_user.profile.description%>
                 <%=current_user.profile.description%>
             <%else%>
-                User description to be added later?
+                User description not filled out :( !
             <%end%>
             
             </p>

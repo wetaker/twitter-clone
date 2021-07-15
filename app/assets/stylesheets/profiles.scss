@@ -1,7 +1,8 @@
-
+$lightblue: rgb(18,190,252);
+$border-color: rgb(47, 51, 54);
 .profiles-container {
 
-
+max-width: 600px;
 
 .avatar {
     width: 100px;
@@ -17,7 +18,7 @@ form {
     flex-direction: column;
     align-items:flex-start;
     padding-left: 40px;
-    padding-top: 50px;
+    padding-top: 100px;
 
     #profile_description {
         width: 95%;
@@ -27,8 +28,44 @@ form {
         color: #d9d9d9;
         border-radius: 1%;
         resize: none;
+        width: 520px;
     }
+
+
+    .file-uploads {
+        display:flex;
+        flex-direction: row;
+        gap: 40px;
+
+    }
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    label[for="profile_Description"] {
+        padding-top: 20px;
+        font-size: 1.1rem;
+    }
+
+    label {
+        font-size: 16px;
+        color: white;
+    }
+
+    input[type="submit"] {
+        padding: 5px 10px;
+        border:none;
+        font-size: 0.9rem;
+        border-radius: 3px;
+        color: black;
+        background-color: $lightblue;
 }
 
+    input[type="submit"]:hover {
+        background-color:rgb(20, 156, 206)
+    }
 
+}
 }

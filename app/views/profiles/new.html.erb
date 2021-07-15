@@ -1,14 +1,37 @@
-
+<div class="user-container">
 <div class="profiles-container">
 
-<%= form_with model: @profile do |form| %>
-    <% if current_user.profile.avatar.attached?%>
-        <img class="avatar" src="<%=(url_for(current_user.profile.avatar))%>">
-    <%else%>
-        <img class="avatar" src="/assets/defaultprofile">
+<div class="usr-banner">
+    <%if current_user.profile.banner.attached?%>
+        <%=image_tag current_user.profile.banner, alt: "ruhroh", class:"no-filter banner"%>
     <%end%>
-    <%= form.file_field :avatar%>
-    <%= form.text_area :description %>
+
+
+
+    <%if current_user.profile.avatar.attached?%>
+        <%=image_tag current_user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
+    <%else%>
+        <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar filter"%>
+    <%end%>
+</div>
+<%= form_with model: @profile do |form| %>
+    <div class="file-uploads">
+    <div class="field">
+        <%= form.label :banner%>
+        <%= form.file_field :banner %>
+    </div>
+
+    <div class="field">
+        <%= form.label :avatar%>
+        <%= form.file_field :avatar %>
+    </div>
+    </div>
+
+    <div class="field">
+        <%= form.label :Description%>
+        <%= form.text_area :description %>
+    </div>
     <%= form.submit "Update profile" %>
 <% end %>
+</div>
 </div>
