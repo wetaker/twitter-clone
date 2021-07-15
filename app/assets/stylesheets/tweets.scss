@@ -32,6 +32,12 @@ min-height: 100%;
         width: 50px;
     }
 
+    img.image-content {
+        width: 95%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
 
 }
 
@@ -311,8 +317,9 @@ img.filter {
     filter: invert(71%) sepia(78%) saturate(3860%) hue-rotate(162deg) brightness(102%) contrast(98%);
 }
 
+#tweet_image {
+    background-image: url('/assets/image')
 }
 
-
-
+}
 

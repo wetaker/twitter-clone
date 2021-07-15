@@ -12,7 +12,7 @@
     <header class="tweet-header">
         <div class="tweeter-info">
             <%=link_to tweet.author do%>
-                <span class="tweeter-name"><%=tweet.author.email%></span>
+                <span class="tweeter-name"><%=tweet.author.username%></span>
             <%end%>
             <span class="tweeter-handle"><%=tweet.author.handle%></span>
             <span class="tweet-date"><%=tweet.created_at.strftime("%B #{tweet.created_at.day.ordinalize}")%></span>
@@ -29,6 +29,8 @@
     <a href="<%=tweet_path(tweet)%>"class="tweet-content">
         <p><%=sanitize addHandlesToBody(tweet.body)%></p>
     </a>
+
+    <%=image_tag tweet.image, class: "no-filter image-content" if tweet.image.attached?%>
 
     <div class="tweet-actions">
         <div class="reply-btn">

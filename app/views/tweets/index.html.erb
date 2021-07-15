@@ -5,10 +5,18 @@
 </header>
 
 <div class="new-tweet-form">
-<div class="profile-pic"><img alt="ruhroh" src="/assets/defaultprofile.png"></div>
+    <%if current_user.profile.avatar.attached?%>
+        <%=image_tag current_user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
+    <%else%>
+        <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar filter"%>
+    <%end%>    
+
+
     <%=form_with model: @tweet do |form|%>
         <%=form.text_area :body, placeholder: "Whats happening?"%>
         <%=form.hidden_field :parent_id, value: nil%>
+
+        <%=form.file_field :image%>
         <%=form.submit "Tweet", class: "tweet-btn"%>
     <%end%>
 </div>

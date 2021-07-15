@@ -20,4 +20,7 @@ class Tweet < ApplicationRecord
   # Retweets
   has_many :retweets, class_name: 'Retweet', foreign_key: :retweeted_tweet_id, dependent: :destroy
   has_many :retweeters, through: :retweets, source: :retweeter
+
+  # Attached media
+  has_one_attached :image
 end

@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweet = Tweet.new
+    @tweet.author = current_user
     @tweets = Tweet.where(author_id: current_user.followed_users, parent_id: nil).or(Tweet.where(author_id: current_user, parent_id: nil)).paginate(:page => params[:page]).order('created_at DESC')
     if current_user.followed_users.empty?
       @tweets = Tweet.where(parent_id: nil).paginate(:page => params[:page]).order('created_at DESC')
@@ -17,11 +18,13 @@ class TweetsController < ApplicationController
   
   def new
     @tweet = Tweet.new
+    @tweet.author = current_user
     @tweet.parent_id = params[:tweet][:parent_id]
   end
   
   def create
     @tweet = current_user.tweets.build(tweet_params)
+    @tweet.image.attach(tweet_params['image'])
     if @tweet.save
       helpers.createMentions(@tweet)
       redirect_to request.referrer
@@ -49,6 +52,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:body, :parent_id)
+    params.require(:tweet).permit(:body, :parent_id, :image)
   end
 end
