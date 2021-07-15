@@ -1,13 +1,14 @@
 
-
+<div class="profiles-container">
 
 <%= form_with model: @profile do |form| %>
     <% if current_user.profile.avatar.attached?%>
-        <img src="<%=(url_for(current_user.avatar))%>">
+        <img class="avatar" src="<%=(url_for(current_user.profile.avatar))%>">
     <%else%>
-        <img src="/assets/defaultprofile">
+        <img class="avatar" src="/assets/defaultprofile">
     <%end%>
     <%= form.file_field :avatar%>
-    <%= form.text_field :description %>
-    <%= form.submit "Create" %>
+    <%= form.text_area :description %>
+    <%= form.submit "Update profile" %>
 <% end %>
+</div>

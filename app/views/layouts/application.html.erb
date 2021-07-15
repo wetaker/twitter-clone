@@ -52,7 +52,9 @@
             </div>
             <div class="profile-container">
               <div class="profile-info">
-                  <span class="tweeter-name"><%=current_user.username%></span>
+                  <%=link_to current_user do %>
+                    <span class="tweeter-name"><%=current_user.username%></span> 
+                  <%end %>
                   <span class="tweeter-handle"><%="@" + current_user.username%></span>
               </div>
               <div class="profile-menu">

@@ -15,7 +15,11 @@
 
 
     <div class="usr-banner">
-       <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar"%>
+        <%if current_user.profile.avatar.attached?%>
+            <%=image_tag current_user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
+       <%else%>
+            <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar filter"%>
+       <%end%>
     </div>
 
 
@@ -37,14 +41,23 @@
                 <%end%>
             </div>
         <%else%>
-            <div class="user-actions"><a>PROFILE BTN SOON</a></div>
+            <%if current_user = @user%>
+                <div class="user-actions"><%=link_to :Profile, new_profile_path, class: "profile-btn"%></div>
+            <%end%>
         <%end%>
 
 
         <div class="user-info">
             <h1 class="username"><%=@user.username%></h1>
             <span class="tweeter-handle"><%=@user.handle%></span>
-            <p class="description">User description to be added later?</p>
+            <p class="description">
+            <%if current_user.profile.description%>
+                <%=current_user.profile.description%>
+            <%else%>
+                User description to be added later?
+            <%end%>
+            
+            </p>
             <div class="follow-info">
                 <span class="following-count">
                     <span class="follow-number"><%=@user.followed_users.count%></span>

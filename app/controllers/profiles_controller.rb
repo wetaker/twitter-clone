@@ -5,7 +5,10 @@ class ProfilesController < ApplicationController
     end
 
     def update
-        if current_user.profile.update_attributes(profile_params)
+        @profile = current_user.profile
+        @profile.description = profile_params()['description'] unless profile_params['description'].nil?
+        @profile.avatar.attach(profile_params['avatar']) unless profile_params['avatar'].nil?
+        if @profile.save
             redirect_to current_user
         else
             render 'profile#new'

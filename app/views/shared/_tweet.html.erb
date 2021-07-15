@@ -1,8 +1,13 @@
 <article class="tweet">
 
 <div class="profile-pic">
-    <%=image_tag "defaultprofile.png", alt: "ruhroh"%>
-</div>
+    <% if tweet.author.profile.avatar.attached?%>
+        <img class="avatar no-filter" src="<%=(url_for(current_user.profile.avatar))%>" alt="ruh roh">
+    <%else%>
+        <img class="avatar filter" src="/assets/defaultprofile" alt="ruh roh">
+    <%end%></div>
+
+
 <div class="content">
     <header class="tweet-header">
         <div class="tweeter-info">

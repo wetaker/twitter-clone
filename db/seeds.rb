@@ -17,6 +17,8 @@ User.destroy_all
     u.username=Faker::Name.name
     u.handle = '@' + u.username
     u.save(validate: false)
+    p = u.create_profile
+    p.save
 end
 
 

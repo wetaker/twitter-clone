@@ -1,5 +1,10 @@
 <div class="new-tweet-form">
-    <div class="profile-pic"><img alt="ruhroh" src="/assets/defaultprofile.png"></div>
+    <div class="profile-pic">    
+    <% if tweet.author.profile.avatar.attached?%>
+        <img class="avatar no-filter" src="<%=(url_for(current_user.profile.avatar))%>" alt="ruh roh">
+    <%else%>
+        <img class="avatar filter" src="/assets/defaultprofile" alt="ruh roh">
+    <%end%></div></div>
 
     <%=form_with model: tweet do |form|%>
         <%=form.text_area :body, placeholder: "Whats happening?"%>

@@ -47,6 +47,7 @@ $border-color: rgb(47, 51, 54);
     justify-content: space-between;
     align-items: flex-start;
     margin-left: 10px;
+    padding-top: 20px;
     svg {
         width: 30px;
         height: auto;
@@ -85,6 +86,21 @@ $border-color: rgb(47, 51, 54);
 
     button:hover {
         background: rgba(129, 209, 223, 0.253);
+    }
+
+    .profile-btn {
+        padding: 8px 10px 5px 10px;
+        margin-right: 15px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $lightblue;
+        border: 1px #d9d9d9 solid;
+    }
+
+    .profile-btn:hover {
+        background-color: $lightblue;
+        color: #d9d9d9;
+        border: 1px solid gray;
     }
 
 }
@@ -137,9 +153,12 @@ h1.username {
 
 .user-avatar {
     width: 150px;
-    height: auto;
+    height: 150px;
     position: relative;
     bottom: -125px;
+    border-radius: 50%;
+    border: solid 5px rgb(63, 60, 60);
+    filter:none;
 }
 
 .handle {
@@ -237,6 +256,7 @@ h1.username {
         }
     }
 
+ 
 
 
 }
