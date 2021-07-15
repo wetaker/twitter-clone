@@ -38,8 +38,12 @@ class User < ApplicationRecord
   has_many :retweets, class_name: 'Retweet', foreign_key: :retweeter_id, dependent: :destroy
   has_many :retweeted_tweets, through: :retweets, source: :retweeted_tweet
 
+  # Profile
+  has_one :profile
+
+
 
   def handle
-    '@' + self.username
+    '@' + self.username unless self.username.nil?
   end
 end

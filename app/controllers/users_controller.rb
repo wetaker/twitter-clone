@@ -27,11 +27,5 @@ class UsersController < ApplicationController
         end
     end
 
-    def create
-        super
-        @user.handle = "@" + @user.username
-        @user.save
-        redirect_to 'root'
-    end
 
 end
