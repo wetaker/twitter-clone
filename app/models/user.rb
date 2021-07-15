@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   
   # Paginate
-  self.per_page = 10
+  self.per_page = 20
 
   # Tweets
   has_many :tweets, foreign_key: :author_id, class_name: 'Tweet', dependent: :destroy
@@ -37,4 +37,9 @@ class User < ApplicationRecord
   # Retweeted tweets 
   has_many :retweets, class_name: 'Retweet', foreign_key: :retweeter_id, dependent: :destroy
   has_many :retweeted_tweets, through: :retweets, source: :retweeted_tweet
+
+
+  def handle
+    '@' + self.username
+  end
 end
