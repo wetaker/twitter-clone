@@ -8,7 +8,7 @@
     <%if current_user.profile.avatar.attached?%>
         <%=image_tag current_user.profile.avatar, alt: "ruhroh", class:"user-avatar no-filter"%>
     <%else%>
-        <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar filter"%>
+        <%=image_tag "defaultprofile.png", alt: "ruhroh", class:"user-avatar no-filter"%>
     <%end%>    
 
 
